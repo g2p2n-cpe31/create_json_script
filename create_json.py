@@ -4,7 +4,7 @@ myKeys = ['prod_id', 'prod_name','store_id', 'username (owner)', 'price', 'ratin
 
 item = int(input("Enter numbers of item: "))
 
-result = ''
+result = []
 
 for i in range(item):
     temp = dict()
@@ -12,9 +12,8 @@ for i in range(item):
         value = str(input('Enter value of ' + key + ' : '))
         temp[key] =  value
     #  { ... }
-    result += (str(temp) + ', ') #  { ... },  { ... },  { ... }
+    result.append(temp)  # [{ ... },  { ... },  { ... }]
 
-result_string = json.dumps(result)          # dict to string
-result_json = json.loads(result_string)     # string to json
+result_json = json.dumps(result, indent=4, separators=(',', ': '), sort_keys=False)          # list to json
 
 print(result_json)
